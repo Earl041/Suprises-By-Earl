@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HYE MY LOVE ❤️</title>
     <style>
-        /* Latar belakang pelangi */
+        /* Latar belakang dengan love 3D */
         body {
             margin: 0;
             overflow: hidden;
@@ -25,18 +25,44 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Tajuk */
-        h1 {
-            font-size: 4rem;
-            color: red;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            margin: 0;
+        /* Animasi love */
+        .love {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: pink;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            clip-path: polygon(50% 0%, 61% 14%, 75% 0, 100% 25%, 75% 50%, 50% 100%, 25% 50%, 0 25%, 25% 0);
+            animation: floatLove 8s infinite ease-in-out;
+        }
+        .love:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .love:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .love:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .love:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .love:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes floatLove {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-300px) rotate(45deg); }
+            100% { transform: translateY(0) rotate(90deg); }
         }
 
-        /* Kotak hadiah */
-        .gift-box {
+        /* Tajuk */
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            margin: 0;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Surat cinta */
+        .love-letter {
             position: relative;
-            width: 100px;
+            width: 150px;
             height: 100px;
             background: linear-gradient(45deg, #ff9a9e, #fad0c4);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -44,31 +70,33 @@
             cursor: pointer;
             transform-style: preserve-3d;
             animation: float 2s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+        .love-letter:before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 50%;
+            background: #fff;
+            top: 0;
+            border-radius: 10px 10px 0 0;
+            clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+        }
+        .love-letter:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 30px;
+            background: red;
+            clip-path: polygon(50% 0%, 61% 14%, 75% 0, 100% 25%, 75% 50%, 50% 100%, 25% 50%, 0 25%, 25% 0);
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-
-        /* Anak panah */
-        .arrow {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 15px solid #fff;
-            animation: arrow-move 1s ease-in-out infinite;
-        }
-        @keyframes arrow-move {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(0, 10px); }
-        }
-        .arrow-top { top: -70px; left: calc(50% - 25px); }
-        .arrow-bottom { bottom: -70px; left: calc(50% - 25px); transform: rotate(180deg); }
-        .arrow-left { left: -70px; top: calc(50% - 25px); transform: rotate(-90deg); }
-        .arrow-right { right: -70px; top: calc(50% - 25px); transform: rotate(90deg); }
 
         /* Popup video fullscreen */
         .video-popup {
@@ -90,20 +118,24 @@
     </style>
 </head>
 <body>
+    <!-- Animasi love -->
+    <div class="love"></div>
+    <div class="love"></div>
+    <div class="love"></div>
+    <div class="love"></div>
+    <div class="love"></div>
+
     <!-- Tajuk -->
     <h1>HYE MY LOVE ❤️</h1>
 
-    <!-- Kotak hadiah dengan anak panah -->
-    <div class="gift-box" onclick="showVideo()">
-        <div class="arrow arrow-top"></div>
-        <div class="arrow arrow-bottom"></div>
-        <div class="arrow arrow-left"></div>
-        <div class="arrow arrow-right"></div>
-    </div>
+    <!-- Surat cinta -->
+    <div class="love-letter" onclick="showVideo()"></div>
 
     <!-- Popup video -->
     <div class="video-popup" id="videoPopup">
-        <video id="popupVideo" autoplay loop></video>
+        <video id="popupVideo" autoplay loop>
+            <source id="popupVideoSource" src="" type="video/mp4">
+        </video>
     </div>
 
     <script>
@@ -117,15 +149,14 @@
         // Fungsi untuk memaparkan video
         function showVideo() {
             const videoPopup = document.getElementById("videoPopup");
-            const popupVideo = document.getElementById("popupVideo");
+            const popupVideoSource = document.getElementById("popupVideoSource");
 
             // Pilih video secara rawak
             const randomVideo = videoSources[Math.floor(Math.random() * videoSources.length)];
-            popupVideo.src = randomVideo;
+            popupVideoSource.src = randomVideo;
 
-            // Paparkan popup dan video
+            // Paparkan popup
             videoPopup.style.display = "flex";
-            popupVideo.play();
         }
     </script>
 </body>
