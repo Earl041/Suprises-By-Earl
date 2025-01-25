@@ -25,6 +25,24 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* Animasi love melayang */
+        .love {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatLove 8s infinite ease-in-out;
+        }
+        .love:nth-child(1) { left: 10%; animation-delay: 0s; color: red; }
+        .love:nth-child(2) { left: 30%; animation-delay: 2s; color: pink; }
+        .love:nth-child(3) { left: 50%; animation-delay: 4s; color: purple; }
+        .love:nth-child(4) { left: 70%; animation-delay: 6s; color: blue; }
+        .love:nth-child(5) { left: 90%; animation-delay: 8s; color: orange; }
+
+        @keyframes floatLove {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-300px) rotate(45deg); opacity: 0.7; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
         /* Tajuk */
         h1 {
             font-size: 3rem;
@@ -37,7 +55,7 @@
             transform: translateX(-50%);
         }
 
-        /* Surat cinta dengan bentuk love */
+        /* Surat cinta */
         .love-letter {
             position: relative;
             width: 150px;
@@ -51,20 +69,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 3rem;
         }
         .love-letter:before {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 60px;
-            background: red;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            clip-path: polygon(50% 0%, 61% 14%, 75% 0, 100% 25%, 75% 50%, 50% 100%, 25% 50%, 0 25%, 25% 0);
+            width: 90%;
+            height: 50%;
+            background: #fff;
+            top: 0;
+            border-radius: 10px 10px 0 0;
+            clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
         }
 
-        /* Animasi */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -90,11 +107,18 @@
     </style>
 </head>
 <body>
+    <!-- Animasi love melayang -->
+    <div class="love">❤️</div>
+    <div class="love">💜</div>
+    <div class="love">💙</div>
+    <div class="love">💛</div>
+    <div class="love">💖</div>
+
     <!-- Tajuk -->
     <h1>HYE MY LOVE ❤️</h1>
 
     <!-- Surat cinta -->
-    <div class="love-letter" onclick="showVideo()"></div>
+    <div class="love-letter" onclick="showVideo()">❤️</div>
 
     <!-- Popup video -->
     <div class="video-popup" id="videoPopup">
