@@ -25,28 +25,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Animasi love */
-        .love {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: pink;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            clip-path: polygon(50% 0%, 61% 14%, 75% 0, 100% 25%, 75% 50%, 50% 100%, 25% 50%, 0 25%, 25% 0);
-            animation: floatLove 8s infinite ease-in-out;
-        }
-        .love:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .love:nth-child(2) { left: 30%; animation-delay: 2s; }
-        .love:nth-child(3) { left: 50%; animation-delay: 4s; }
-        .love:nth-child(4) { left: 70%; animation-delay: 6s; }
-        .love:nth-child(5) { left: 90%; animation-delay: 8s; }
-
-        @keyframes floatLove {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-300px) rotate(45deg); }
-            100% { transform: translateY(0) rotate(90deg); }
-        }
-
         /* Tajuk */
         h1 {
             font-size: 3rem;
@@ -59,7 +37,7 @@
             transform: translateX(-50%);
         }
 
-        /* Surat cinta */
+        /* Surat cinta dengan bentuk love */
         .love-letter {
             position: relative;
             width: 150px;
@@ -77,22 +55,16 @@
         .love-letter:before {
             content: '';
             position: absolute;
-            width: 90%;
-            height: 50%;
-            background: #fff;
-            top: 0;
-            border-radius: 10px 10px 0 0;
-            clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
-        }
-        .love-letter:after {
-            content: '';
-            position: absolute;
-            width: 70px;
-            height: 30px;
+            width: 60px;
+            height: 60px;
             background: red;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             clip-path: polygon(50% 0%, 61% 14%, 75% 0, 100% 25%, 75% 50%, 50% 100%, 25% 50%, 0 25%, 25% 0);
         }
 
+        /* Animasi */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -118,13 +90,6 @@
     </style>
 </head>
 <body>
-    <!-- Animasi love -->
-    <div class="love"></div>
-    <div class="love"></div>
-    <div class="love"></div>
-    <div class="love"></div>
-    <div class="love"></div>
-
     <!-- Tajuk -->
     <h1>HYE MY LOVE ❤️</h1>
 
