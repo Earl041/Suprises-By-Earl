@@ -133,30 +133,29 @@
 
     <!-- Popup video -->
     <div class="video-popup" id="videoPopup">
-        <video id="popupVideo" autoplay loop>
-            <source id="popupVideoSource" src="" type="video/mp4">
-        </video>
+        <video id="popupVideo" autoplay loop></video>
     </div>
 
     <script>
         // Senarai sumber video
         const videoSources = [
-            "https://files.catbox.moe/rdvmud.mp4",
-            "https://files.catbox.moe/rdvmud.mp4",
-            "https://files.catbox.moe/rdvmud.mp4"
+            "https://files.catbox.moe/sample1.mp4",
+            "https://files.catbox.moe/sample2.mp4",
+            "https://files.catbox.moe/sample3.mp4"
         ];
 
         // Fungsi untuk memaparkan video
         function showVideo() {
             const videoPopup = document.getElementById("videoPopup");
-            const popupVideoSource = document.getElementById("popupVideoSource");
+            const popupVideo = document.getElementById("popupVideo");
 
             // Pilih video secara rawak
             const randomVideo = videoSources[Math.floor(Math.random() * videoSources.length)];
-            popupVideoSource.src = randomVideo;
+            popupVideo.src = randomVideo;
 
             // Paparkan popup
             videoPopup.style.display = "flex";
+            popupVideo.play();
         }
     </script>
 </body>
